@@ -11,9 +11,14 @@ stage('compile the job')     //validate the job as well
     sh 'mvn compile'
 } }}
 
-stage('test the job')     //validate the job as well
+stage('test the job')     //test the job
 {steps { withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_HOME', maven: 'MVN_HOME', mavenSettingsConfig: '', traceability: true) {
     sh 'mvn test'
+} }}
+
+stage('build the job')     //build the job
+{steps { withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_HOME', maven: 'MVN_HOME', mavenSettingsConfig: '', traceability: true) {
+    sh 'mvn package'
 } }}
 
 }
