@@ -6,12 +6,7 @@ stage('scm checkout')
 { steps { git branch: 'master', url: 'https://github.com/khkanak/mavenproject.git' }}
 
 
-stage('validate the job')
-{steps { withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_HOME', maven: 'MVN_HOME', mavenSettingsConfig: '', traceability: true) {
-    sh 'mvn validate'
-} }}
-
-stage('compile the job')
+stage('compile the job')     //validate the job as well
 {steps { withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_HOME', maven: 'MVN_HOME', mavenSettingsConfig: '', traceability: true) {
     sh 'mvn compile'
 } }}
