@@ -23,7 +23,7 @@ stage('build the job')     //build the job
 
 stage('deploy to tomcat') // deploy to destination server
 {steps { sshagent(['DEVCICD']) {
-  sh 'ssh -o StrictHostKeyChecking=no webapp/target/webapp.war ec2-user@13.60.247.99:/usr/share/tomcat/webapps/'
+  sh 'scp -o StrictHostKeyChecking=no webapp/target/webapp.war ec2-user@13.60.247.99:/usr/share/tomcat/webapps/'
 }}}
 
 }
