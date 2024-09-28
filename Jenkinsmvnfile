@@ -21,5 +21,10 @@ stage('build the job')     //build the job
     sh 'mvn package'
 } }}
 
+stage('deploy to tomcat') // deploy to destination server
+{steps { sshagent(['DEVCICD']) {
+  sh 'ssh -o StrictHostKeyChecking=no webapp/target/webapp.war ec2-user@13.60.247.99:/usr/share/tomcat/webapps/'
+}}}
+
 }
 }
